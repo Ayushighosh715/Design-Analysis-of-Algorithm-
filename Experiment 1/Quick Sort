@@ -1,1 +1,23 @@
+## Problem Statement
+Write a program to sort an array of length 
+ using the Quick Sort algorithm. The program should read the array elements and print the array before and after sorting.
+---
 
+## Algorithm
+1. Start.
+2. Read the array elements.
+3. Choose the last element as the pivot.
+4. Partition the array so that:
+5.Elements smaller than or equal to the pivot are on the left.
+6. Elements greater than the pivot are on the right.
+7. Place the pivot in its correct position.
+8. Recursively apply Quick Sort to the left and right subarrays.
+9. Repeat until each subarray has one or no elements.
+10. Print the sorted array.
+11. Stop.
+---
+
+## Flowchart
+![Flowchart](Area_Of_Sqaure.png)
+
+---
