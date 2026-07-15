@@ -92,7 +92,4 @@ int main() {
     return 0;
 }
 
-## Flowchart
-![Flowchart](Quick Sort codetantra.png)
 
----
