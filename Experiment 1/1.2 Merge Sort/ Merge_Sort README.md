@@ -101,3 +101,7 @@ int main() {
     free(arr);
     return 0;
 }
+## Execution
+<p align="center">
+  <img src ="Merge Sort.png" width="900">
+</p>
