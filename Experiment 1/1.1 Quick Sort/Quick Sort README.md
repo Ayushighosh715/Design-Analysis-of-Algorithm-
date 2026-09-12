@@ -91,5 +91,9 @@ int main() {
 
     return 0;
 }
+## Execution
+<p align="center">
+  < img src = "Quick Sort codetantra.png " width="900">
+</p>
 
 
