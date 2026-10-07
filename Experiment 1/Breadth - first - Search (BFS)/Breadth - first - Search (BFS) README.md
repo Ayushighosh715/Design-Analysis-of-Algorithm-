@@ -6,19 +6,33 @@ Write a program to implement Breadth First Search (BFS) graph traversal methods.
 
 
 1.Start
+
 2.Read the number of vertices N and initialize all vertices as unvisited.
+
 3.Read the number of edges E.
+
 4.For each edge, read the source and destination vertices and create the adjacency list.
+
 5.Read the starting vertex v.
+
 6.Mark v as visited and insert it into the queue.
+
 7.Repeat while the queue is not empty:
+ 
  Delete a vertex from the front of the queue.
+ 
  Print the vertex.
+ 
  Traverse all adjacent vertices.
+ 
  If an adjacent vertex is unvisited:
+ 
  Mark it as visited.
+ 
  Insert it into the queue.
+
 8.Continue until the queue becomes empty.
+
 9.Stop.
 
 
