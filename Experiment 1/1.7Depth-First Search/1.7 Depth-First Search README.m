@@ -3,125 +3,61 @@ Write a C program to implement and perform a Depth-First Search (DFS) on a direc
 
 
 ## Algorithm##
-
 1.Start
-2. Read the number of vertices N and initialize all vertices as unvisited.
-3. Read the number of edges E.
-4. For each edge, read the source and destination vertices and create the adjacency list.
-5. Read the starting vertex v.
-6. Mark v as visited and insert it into the queue.
-7.Repeat while the queue is not empty:
-    - Delete a vertex from the front of the queue.
-    - Print the vertex.
-     - Traverse all adjacent vertices.
-     - If an adjacent vertex is unvisited:
-     - Mark it as visited.
-     - Insert it into the queue.
-8.Continue until the queue becomes empty.
-9. Stop.
+2.Read the number of rows r1 and columns c1 of matrix A.
+3.Read all elements of matrix A.
+4.Read the number of rows r2 and columns c2 of matrix B.
+5.Check whether c1 == r2.
+6.If not equal, print "Invalid input" and stop.
+7.Read all elements of matrix B.
+8.Initialize the result matrix C with 0.
+  For each row i of A:
+ For each column j of B:
+ Set C[i][j] = 0.
+ For k = 0 to c1 - 1, calculate:
+ C[i][j] = C[i][j] + A[i][k] × B[k][j]
+9.Display the result matrix C.
+10.Stop.
+
 
 ## Code ##
 
 #include <stdio.h>
-#include <stdlib.h>
-#define MAX 99
 
-struct node {
-    int vertex;
-    struct node* next;
-};
-typedef struct node* GNODE;
+int main() {
+	int r1, c1, r2, c2;
+	int a[100][100], b[100][100], c[100][100];
 
-GNODE graph[20];
-int visited[20];
-int queue[MAX], front = -1, rear = -1;
-int n;
+	scanf("%d %d", &r1, &c1);
 
-void insertQueue(int vertex) {
-    if (rear == MAX - 1)
-        printf("Queue Overflow.\n");
-    else {
-        if (front == -1)
-            front = 0;
-        rear++;
-        queue[rear] = vertex;
-    }
-}
+	for (int i = 0; i < r1; i++)
+		for (int j = 0; j < c1; j++)
+			scanf("%d", &a[i][j]);
 
-int isEmptyQueue() {
-    return (front == -1 || front > rear);
-}
+	scanf("%d %d", &r2, &c2);
 
-int deleteQueue() {
-    if (isEmptyQueue()) {
-        printf("Queue Underflow\n");
-        exit(1);
-    }
-    return queue[front++];
-}
-
-void BFS(int v) {
-     GNODE p;
-    int queue[100];
-    int front = 0, rear = 0;
-
-    visited[v] = 1;
-    queue[rear++] = v;
-
-    while (front < rear) {
-        v = queue[front++];
-        printf("\n%d", v);
-
-        p = graph[v];
-
-        while (p != NULL) {
-            if (visited[p->vertex] == 0) {
-                visited[p->vertex] = 1;
-                queue[rear++] = p->vertex;
-            }
-            p = p->next;
-        }
+	if (c1 != r2) {
+		printf("Invalid input");
+		return 0;
 	}
-}
 
-void main() {
-    int N, E, s, d, i, v;
-    GNODE p, q;
+	for (int i = 0; i < r2; i++)
+		for (int j = 0; j < c2; j++)
+			scanf("%d", &b[i][j]);
 
-    printf("Enter the number of vertices: ");
-    scanf("%d", &N);
-    n = N;
+	for (int i = 0; i < r1; i++) {
+		for (int j = 0; j < c2; j++) {
+			c[i][j] = 0;
+			for (int k = 0; k < c1; k++)
+				c[i][j] += a[i][k] * b[k][j];
+		}
+	}
 
-    for (i = 0; i < N; i++) {
-        graph[i] = NULL;
-        visited[i] = 0;
-    }
+	for (int i = 0; i < r1; i++) {
+		for (int j = 0; j < c2; j++)
+			printf("%d ", c[i][j]);
+		printf("\n");
+	}
 
-    printf("Enter the number of edges: ");
-    scanf("%d", &E);
-    for (i = 1; i <= E; i++) {
-        printf("Enter source: ");
-        scanf("%d", &s);
-        printf("Enter destination: ");
-        scanf("%d", &d);
-
-        q = (GNODE)malloc(sizeof(struct node));
-        q->vertex = d;
-        q->next = NULL;
-
-        if (graph[s] == NULL) {
-            graph[s] = q;
-        } else {
-            p = graph[s];
-            while (p->next != NULL)
-                p = p->next;
-            p->next = q;
-        }
-    }
-
-    printf("Enter Start Vertex for BFS: ");
-    scanf("%d", &v);
-    printf("BFS of graph: ");
-    BFS(v);
-    printf("\n");
+	return 0;
 }
