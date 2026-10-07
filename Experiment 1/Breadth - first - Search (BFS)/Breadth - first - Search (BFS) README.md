@@ -1,8 +1,9 @@
 ## Problem Statement ##
 Write a program to implement Breadth First Search (BFS) graph traversal methods.
------
+
 
 ## Algorithm ##
+
 
 1.Start
 2.Read the number of vertices N and initialize all vertices as unvisited.
@@ -19,9 +20,10 @@ Write a program to implement Breadth First Search (BFS) graph traversal methods.
  Insert it into the queue.
 8.Continue until the queue becomes empty.
 9.Stop.
------
+
 
 ## Code ##
+
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX 99
